@@ -4,7 +4,7 @@ module.exports = {
             mainProcessFile: 'src/main/background.js',
             rendererProcessFile: 'src/renderer/index.js',
             preload: 'src/main/preload.js', 
-            appId: "com.chaintrust.staker",
+            appId: "com.fishtracker.drone",
             outputDir: "dist",
             builderOptions: {
                 // asar: false,
