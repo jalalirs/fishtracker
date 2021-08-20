@@ -1,0 +1,34 @@
+# Staker CI
+version: 1.0.0.{build}
+image:
+  - Visual Studio 2019
+  - Ubuntu2004
+  - macOS
+platform:
+  - x64
+configuration:
+  - Release
+environment:
+  nodejs_version: "14"
+clone_depth: 1
+cache:
+  - C:\cache
+install:
+  # install node in linux and mac, not needed in windows
+  # - ps: Update-NodeJsInstallation (Get-NodeJsLatestBuild $env:nodejs_version) $env:PLATFORM
+  - node -v
+  - sh: nvm install $nodejs_version
+  # install yarn
+  - npm install yarn -g
+  - node -v
+  - yarn -v
+  # before_build:
+  #   - dir C:\cache >nul 2>&1 || mkdir C:\cache
+  #   - wslconfig /u Ubuntu-18.04
+  #   - ps: tools\setup_wsl.ps1
+  #   - C:\Python37\python -m pip install --disable-pip-version-check paramiko >NUL
+  #   - C:\Python37\python tools\setupssh.py support@localhost support
+build_script:
+  - yarn
+  - yarn build
+test: off
