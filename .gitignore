@@ -102,3 +102,7 @@ dist
 
 # TernJS port file
 .tern-port
+
+src/python/models/*
+src/resources/videos/*
+src/resources/.DS_Store
